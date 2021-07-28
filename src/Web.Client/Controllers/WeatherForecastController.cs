@@ -24,7 +24,9 @@ namespace Web.Client.Controllers
 		}
 
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get()
+		[IsAuthorized]
+		[Route("get-weather-forecast")]
+		public IEnumerable<WeatherForecast> GetWeatherForecast()
 		{
 			var rng = new Random();
 			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
